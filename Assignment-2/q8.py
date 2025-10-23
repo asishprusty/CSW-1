@@ -1,0 +1,16 @@
+# Program to process email-like strings using functional programming tools
+
+# Sample input list
+emails = ["test@gmail.com", "hello123", "abc.org", "world@yahoo.com", "info@openai.org"]
+
+# a) Use filter() with lambda to extract only valid emails
+valid_emails = list(filter(lambda e: "@" in e and (e.endswith(".com") or e.endswith(".org")), emails))
+print("Valid Emails:", valid_emails)
+
+# b) Use list comprehension to extract domain names (part between '@' and '.')
+domains = [email.split('@')[1].split('.')[0] for email in valid_emails]
+print("Domains:", domains)
+
+# c) Construct a dictionary (domain frequency count) using dictionary comprehension
+domain_freq = {domain: domains.count(domain) for domain in set(domains)}
+print("Domain Frequency:", domain_freq)
